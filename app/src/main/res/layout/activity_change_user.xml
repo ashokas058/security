@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.ashok_ray.security.changeUser"
+    tools:context="com.example.ashok_ray.security.Module_SETTINGS.ACT_UpdateUser"
     android:background="@drawable/main_layout_view_design">
 
     <EditText

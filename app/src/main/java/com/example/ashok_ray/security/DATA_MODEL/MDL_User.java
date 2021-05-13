@@ -1,12 +1,12 @@
-package com.example.ashok_ray.security;
+package com.example.ashok_ray.security.DATA_MODEL;
 
 /**
  * Created by Ashok_Ray on 14-01-2019.
  */
 
-public class model_profile {
+public class MDL_User {
     String user_name,user_email,image_url,status,key;
-    model_profile() {
+    MDL_User() {
     }
 
     public String getUser_name() {
@@ -49,7 +49,7 @@ public class model_profile {
         this.key = key;
     }
 
-    public model_profile(String user_name, String user_email, String image_url, String status, String key) {
+    public MDL_User(String user_name, String user_email, String image_url, String status, String key) {
 
         this.user_name = user_name;
         this.user_email = user_email;

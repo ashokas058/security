@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.example.ashok_ray.security.DATA_MODEL.MDL_Message;
 import com.example.ashok_ray.security.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -25,12 +26,12 @@ import de.hdodenhof.circleimageview.CircleImageView;
  * Created by Ashok_Ray on 28-01-2019.
  */
 
-public class messageAdapter extends RecyclerView.Adapter<messageAdapter.messageviewholder> {
-    ArrayList<model_message> modelMessage =new ArrayList<>();
+public class ADPTR_Message extends RecyclerView.Adapter<ADPTR_Message.messageviewholder> {
+    ArrayList<MDL_Message> modelMessage =new ArrayList<>();
     DatabaseReference databaseReference;
     Context context;
 
-    public messageAdapter(ArrayList<model_message> modelMessage,Context context) {
+    public ADPTR_Message(ArrayList<MDL_Message> modelMessage, Context context) {
         this.modelMessage = modelMessage;
         this.context=context;
     }
@@ -44,7 +45,7 @@ public class messageAdapter extends RecyclerView.Adapter<messageAdapter.messagev
 
     @Override
     public void onBindViewHolder(final messageviewholder holder, int position) {
-        model_message model=modelMessage.get(position);
+        MDL_Message model=modelMessage.get(position);
         String currentUser_uid=FirebaseAuth.getInstance().getCurrentUser().getUid();
         String messageFrom=model.getFrom();
         databaseReference= FirebaseDatabase.getInstance().getReference("user").child(messageFrom);

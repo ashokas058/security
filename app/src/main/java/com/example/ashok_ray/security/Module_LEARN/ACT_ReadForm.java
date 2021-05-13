@@ -1,4 +1,4 @@
-package com.example.ashok_ray.security;
+package com.example.ashok_ray.security.Module_LEARN;
 
 import android.content.Intent;
 import android.support.design.widget.FloatingActionButton;
@@ -9,9 +9,11 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.ashok_ray.security.Module_HOME.ACT_Home;
+import com.example.ashok_ray.security.Module_SSH.FRGMT_Terminal;
+import com.example.ashok_ray.security.R;
 import com.squareup.picasso.Picasso;
 
-public class reader_interface extends AppCompatActivity {
+public class ACT_ReadForm extends AppCompatActivity {
 TextView title,fulltext;
 ImageView sub_image;
 FloatingActionButton floatingActionButton;
@@ -26,7 +28,7 @@ FloatingActionButton floatingActionButton;
         floatingActionButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_terminal_id,new terminal()).commit();
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_terminal_id,new FRGMT_Terminal()).commit();
             }
         });
 Bundle b=getIntent().getExtras();

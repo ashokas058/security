@@ -14,8 +14,9 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 
+import com.example.ashok_ray.security.DATA_MODEL.MDL_Message;
 import com.example.ashok_ray.security.R;
-import com.example.ashok_ray.security.model_profile;
+import com.example.ashok_ray.security.DATA_MODEL.MDL_User;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -33,7 +34,7 @@ import java.util.HashMap;
  * Created by Ashok_Ray on 04-01-2019.
  */
 
-public class chat_fragment extends Fragment {
+public class FRGMT_ChatGroup extends Fragment {
     String user_name;
     public void getusername(String user_name){
         this.user_name=user_name;
@@ -49,7 +50,7 @@ public class chat_fragment extends Fragment {
     String message;
     EditText message_text;
     RecyclerView messageRecycler;
-   ArrayList <model_message> modelList;
+   ArrayList <MDL_Message> modelList;
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -79,7 +80,7 @@ public class chat_fragment extends Fragment {
             databaseReference.addValueEventListener(new ValueEventListener() {
                 @Override
                 public void onDataChange(DataSnapshot dataSnapshot) {
-                    model_profile mprofile = dataSnapshot.getValue(model_profile.class);
+                    MDL_User mprofile = dataSnapshot.getValue(MDL_User.class);
                     String username = mprofile.getUser_name();
                     String email = mprofile.getUser_email();
                     String recv = message_text.getText().toString();
@@ -135,11 +136,11 @@ public class chat_fragment extends Fragment {
            @Override
            public void onDataChange(DataSnapshot dataSnapshot) {
                for (DataSnapshot b:dataSnapshot.getChildren()){
-                   model_message n=b.getValue(model_message.class);
+                   MDL_Message n=b.getValue(MDL_Message.class);
                    modelList.add(n);
 
                }
-               messageAdapter g=new messageAdapter(modelList,getContext());
+               ADPTR_Message g=new ADPTR_Message(modelList,getContext());
                messageRecycler.setAdapter(g);
                g.notifyDataSetChanged();
                //messageRecycler.setHasFixedSize(true);

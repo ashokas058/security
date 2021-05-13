@@ -16,7 +16,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".login"
+            android:name=".Module_AUTH.ACT_Login"
             android:noHistory="true" />
         <activity
             android:name=".Module_HOME.ACT_Home"
@@ -29,13 +29,13 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".register"
+            android:name=".Module_AUTH.ACT_Register"
             android:noHistory="true" />
-        <activity android:name=".setting" />
-        <activity android:name=".changeUser" />
-        <activity android:name=".reader_interface" />
-        <activity android:name=".master_chat_private" />
-        <activity android:name=".ssh_setting"></activity>
+        <activity android:name=".Module_SETTINGS.ACT_Settings" />
+        <activity android:name=".Module_SETTINGS.ACT_UpdateUser" />
+        <activity android:name=".Module_LEARN.ACT_ReadForm" />
+        <activity android:name=".Module_CHAT.ACT_ChatPrivate" />
+        <activity android:name=".Module_SSH.ACT_SshSettings"></activity>
     </application>
 
 </manifest>

@@ -1,4 +1,4 @@
-package com.example.ashok_ray.security;
+package com.example.ashok_ray.security.Module_SETTINGS;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -15,6 +15,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.ashok_ray.security.Module_HOME.ACT_Home;
+import com.example.ashok_ray.security.R;
+import com.example.ashok_ray.security.Module_SSH.ACT_SshSettings;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -33,7 +35,7 @@ import com.squareup.picasso.Picasso;
 
 import java.io.IOException;
 
-public class setting extends AppCompatActivity implements View.OnClickListener {
+public class ACT_Settings extends AppCompatActivity implements View.OnClickListener {
     ImageView temp;
     TextView change_username,change_phone,sshServer;
     Switch phoneNumber,onLine;
@@ -51,7 +53,7 @@ public class setting extends AppCompatActivity implements View.OnClickListener {
         sshServer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent=new Intent(getApplicationContext(),ssh_setting.class);
+                Intent intent=new Intent(getApplicationContext(), ACT_SshSettings.class);
                 startActivity(intent);
             }
         });
@@ -145,7 +147,7 @@ public class setting extends AppCompatActivity implements View.OnClickListener {
                             Picasso.get().load(url).into(temp);
                         }
                         else{
-                            Toast.makeText(setting.this, "upload Profile", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(ACT_Settings.this, "upload Profile", Toast.LENGTH_SHORT).show();
                         }
                     }
 
@@ -177,7 +179,7 @@ public class setting extends AppCompatActivity implements View.OnClickListener {
                 if (FirebaseAuth.getInstance().getCurrentUser()!=null)
                 { String uid=FirebaseAuth.getInstance().getCurrentUser().getUid();
                     if (uid!=null){
-                        Intent intent=new Intent(getApplicationContext(),changeUser.class);
+                        Intent intent=new Intent(getApplicationContext(), ACT_UpdateUser.class);
                         Bundle bb=new Bundle();
                         bb.putString("uid",uid);
                         bb.putString("type","changeUsername");
@@ -191,7 +193,7 @@ public class setting extends AppCompatActivity implements View.OnClickListener {
                 if (FirebaseAuth.getInstance().getCurrentUser()!=null)
                 { String uid=FirebaseAuth.getInstance().getCurrentUser().getUid();
                     if (uid!=null){
-                        Intent intent=new Intent(getApplicationContext(),changeUser.class);
+                        Intent intent=new Intent(getApplicationContext(), ACT_UpdateUser.class);
                         Bundle bb=new Bundle();
                        bb.putString("uid",uid);
                        bb.putString("type","changePhonenumber");

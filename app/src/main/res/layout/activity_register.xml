@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.ashok_ray.security.register"
+    tools:context="com.example.ashok_ray.security.Module_AUTH.ACT_Register"
     android:background="@drawable/main_layout_view_design">
     <ImageView
         android:id="@+id/imageView"

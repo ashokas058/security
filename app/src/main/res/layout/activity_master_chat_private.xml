@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.ashok_ray.security.master_chat_private">
+    tools:context="com.example.ashok_ray.security.Module_CHAT.ACT_ChatPrivate">
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"></android.support.design.widget.AppBarLayout>

@@ -12,7 +12,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.ashok_ray.security.R;
-import com.example.ashok_ray.security.model_recycler;
+import com.example.ashok_ray.security.DATA_MODEL.MDL_Learn;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -22,7 +22,7 @@ import com.squareup.picasso.Picasso;
  * Created by Ashok_Ray on 04-01-2019.
  */
 
-public class learn_fragment extends Fragment {
+public class FRGMT_Learn extends Fragment {
     RecyclerView learnrecycler;
     FirebaseDatabase database;
     DatabaseReference reference;
@@ -49,9 +49,9 @@ public class learn_fragment extends Fragment {
        database=FirebaseDatabase.getInstance();
        reference=database.getReference("user").child("beginners");
        reference.keepSynced(true);
-       FirebaseRecyclerAdapter<model_recycler,learnviewholder>firebase_adapt=new FirebaseRecyclerAdapter<model_recycler, learnviewholder>(model_recycler.class,R.layout.learn_recycler_layout_new,learnviewholder.class,reference) {
+       FirebaseRecyclerAdapter<MDL_Learn,learnviewholder>firebase_adapt=new FirebaseRecyclerAdapter<MDL_Learn, learnviewholder>(MDL_Learn.class,R.layout.learn_recycler_layout_new,learnviewholder.class,reference) {
            @Override
-           protected void populateViewHolder(learnviewholder viewHolder, model_recycler model, int position) {
+           protected void populateViewHolder(learnviewholder viewHolder, MDL_Learn model, int position) {
                viewHolder.setname(model.getTitle_top());
                viewHolder.setimage(model.getImage_url());
                viewHolder.setfulltext(model.getText_data());

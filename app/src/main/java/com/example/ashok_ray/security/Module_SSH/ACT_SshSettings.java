@@ -1,4 +1,4 @@
-package com.example.ashok_ray.security;
+package com.example.ashok_ray.security.Module_SSH;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -6,12 +6,13 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import com.example.ashok_ray.security.R;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.HashMap;
 
-public class ssh_setting extends AppCompatActivity {
+public class ACT_SshSettings extends AppCompatActivity {
 Button setUp;
 EditText hostName_edit,userName_edit,password_edit,port_edit;
 int port;
@@ -41,7 +42,7 @@ String port_str;
                 hashMap.put("username",username);
                 hashMap.put("password",password);
                 databaseReference.setValue(hashMap);
-                //ssh_connection sf=new ssh_connection();
+                //CLS_SshConnection sf=new CLS_SshConnection();
 
             }
         });

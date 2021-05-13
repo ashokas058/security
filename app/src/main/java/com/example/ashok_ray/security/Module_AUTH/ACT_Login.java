@@ -1,4 +1,4 @@
-package com.example.ashok_ray.security;
+package com.example.ashok_ray.security.Module_AUTH;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
@@ -13,13 +13,14 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.ashok_ray.security.Module_HOME.ACT_Home;
+import com.example.ashok_ray.security.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
-public class login extends AppCompatActivity {
+public class ACT_Login extends AppCompatActivity {
     EditText user_edt;
     EditText paswd_edt;
     Button login_bt;
@@ -28,7 +29,6 @@ public class login extends AppCompatActivity {
     FirebaseAuth firebaseAuth;
     String email_patern1;
     TextView click_regist;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,14 +37,14 @@ public class login extends AppCompatActivity {
         paswd_edt=findViewById(R.id.pass_id);
         login_bt=findViewById(R.id.log_bt);
         email_patern1 = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
-        progressDialog=new ProgressDialog(login.this);
+        progressDialog=new ProgressDialog(ACT_Login.this);
         progressDialog.setTitle("LogingIn");
         progressDialog.setMessage("Please Waite");
         click_regist=findViewById(R.id.regist_click_id);
         click_regist.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent regist_intent=new Intent(getApplicationContext(),register.class);
+                Intent regist_intent=new Intent(getApplicationContext(), ACT_Register.class);
                 startActivity(regist_intent);
             }
         });
@@ -72,18 +72,18 @@ public class login extends AppCompatActivity {
                             public void onComplete(@NonNull Task<AuthResult> task) {
                                 if (task.isSuccessful()) {
                                     progressDialog.hide();
-                                    Intent main_home=new Intent(login.this, ACT_Home.class);
+                                    Intent main_home=new Intent(ACT_Login.this, ACT_Home.class);
                                     startActivity(main_home);
                                 } else {
                                     progressDialog.hide();
-                                    //Toast.makeText(login.this, "Invalid", Toast.LENGTH_LONG).show();
+                                    //Toast.makeText(ACT_Login.this, "Invalid", Toast.LENGTH_LONG).show();
                                 }
 
                             }
                         }).addOnFailureListener(new OnFailureListener() {
                             @Override
                             public void onFailure(@NonNull Exception e) {
-                                Toast.makeText(login.this,e.getMessage(), Toast.LENGTH_SHORT).show();
+                                Toast.makeText(ACT_Login.this,e.getMessage(), Toast.LENGTH_SHORT).show();
                             }
                         });
                     }

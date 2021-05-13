@@ -10,7 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.ashok_ray.security.R;
-import com.example.ashok_ray.security.model_profile;
+import com.example.ashok_ray.security.DATA_MODEL.MDL_User;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -24,7 +24,7 @@ import java.util.ArrayList;
  */
 
 public class user_list_message_layout extends Fragment {
-ArrayList<model_profile> m_pro;
+ArrayList<MDL_User> m_pro;
 //Context context;
 RecyclerView m_list_user;
 
@@ -39,14 +39,14 @@ RecyclerView m_list_user;
         super.onViewCreated(view, savedInstanceState);
         m_list_user=view.findViewById(R.id.user_list_Recycler_id);
         m_list_user.setLayoutManager(new LinearLayoutManager(getContext(),LinearLayoutManager.VERTICAL,false));
-        m_pro=new ArrayList<model_profile>();
+        m_pro=new ArrayList<MDL_User>();
         DatabaseReference databaseReference= FirebaseDatabase.getInstance().getReference("user");
         //databaseReference.keepSynced(true);
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 for(DataSnapshot shot:dataSnapshot.getChildren()){
-                    model_profile md=shot.getValue(model_profile.class);
+                    MDL_User md=shot.getValue(MDL_User.class);
                     m_pro.add(md);
                 }
                user_list_model_recycler_adapter m_adapter=new user_list_model_recycler_adapter(m_pro);

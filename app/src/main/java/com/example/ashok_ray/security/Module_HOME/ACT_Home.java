@@ -18,11 +18,11 @@ import android.widget.TextView;
 import java.util.ArrayList;
 
 import com.example.ashok_ray.security.R;
-import com.example.ashok_ray.security.Module_CHAT.chat_fragment;
-import com.example.ashok_ray.security.Module_LEARN.learn_fragment;
-import com.example.ashok_ray.security.login;
+import com.example.ashok_ray.security.Module_CHAT.FRGMT_ChatGroup;
+import com.example.ashok_ray.security.Module_LEARN.FRGMT_Learn;
+import com.example.ashok_ray.security.Module_AUTH.ACT_Login;
 import com.example.ashok_ray.security.Module_PROFILE.FRGMT_Profile;
-import com.example.ashok_ray.security.setting;
+import com.example.ashok_ray.security.Module_SETTINGS.ACT_Settings;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthUserCollisionException;
 import com.google.firebase.auth.FirebaseUser;
@@ -79,7 +79,7 @@ public class ACT_Home extends AppCompatActivity implements NavigationView.OnNavi
                 viewPager.setCurrentItem(2);
                 break;
             case R.id.setting_id:
-                Intent intent=new Intent(getApplicationContext(), setting.class);
+                Intent intent=new Intent(getApplicationContext(), ACT_Settings.class);
                 startActivity(intent);
 
 
@@ -98,7 +98,7 @@ public class ACT_Home extends AppCompatActivity implements NavigationView.OnNavi
             databaseReference.setValue("ofline");
         }
         else{
-            Intent log=new Intent(getApplicationContext(),login.class);
+            Intent log=new Intent(getApplicationContext(), ACT_Login.class);
             startActivity(log); }
     }
 
@@ -113,8 +113,8 @@ public class ACT_Home extends AppCompatActivity implements NavigationView.OnNavi
     private void initFragments() {
         final CLS_HomeViewpager adapter = new CLS_HomeViewpager(getSupportFragmentManager());
         adapter.addfragment(new FRGMT_Profile(),"Profile");
-        adapter.addfragment(new learn_fragment(), "Learn");
-        adapter.addfragment(new chat_fragment(), "Chat");
+        adapter.addfragment(new FRGMT_Learn(), "Learn");
+        adapter.addfragment(new FRGMT_ChatGroup(), "Chat");
         viewPager.setAdapter(adapter);
         tabLayout.setupWithViewPager(viewPager, true);
     }
@@ -124,7 +124,7 @@ public class ACT_Home extends AppCompatActivity implements NavigationView.OnNavi
             @Override
             public void onIdTokenChanged(@NonNull FirebaseAuth firebaseAuth) {
                 if(firebaseAuth.getCurrentUser()==null){
-                    Intent log=new Intent(getApplicationContext(), login.class);
+                    Intent log=new Intent(getApplicationContext(), ACT_Login.class);
                     startActivity(log);
                 }
 
@@ -160,7 +160,7 @@ public class ACT_Home extends AppCompatActivity implements NavigationView.OnNavi
             }
         }
         else{
-            Intent intent =new Intent(getApplicationContext(),login.class);
+            Intent intent =new Intent(getApplicationContext(), ACT_Login.class);
             startActivity(intent);
         }
     }

@@ -1,4 +1,4 @@
-package com.example.ashok_ray.security;
+package com.example.ashok_ray.security.DATA_MODEL;
 
 import android.content.Context;
 
@@ -6,15 +6,15 @@ import android.content.Context;
  * Created by Ashok_Ray on 12-01-2019.
  */
 
-public class news_model_class  {
+public class MDL_News {
     String title;
     String fullnews;
     String url;
-news_model_class(){
+MDL_News(){
 
 }
 
-    public news_model_class(String title, String fullnews, String url) {
+    public MDL_News(String title, String fullnews, String url) {
         this.title = title;
         this.fullnews = fullnews;
         this.url = url;

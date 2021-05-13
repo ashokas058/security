@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.example.ashok_ray.security.ssh_setting">
+    tools:context="com.example.ashok_ray.security.Module_SSH.ACT_SshSettings">
 <LinearLayout
     android:layout_marginTop="180dp"
     android:orientation="vertical"

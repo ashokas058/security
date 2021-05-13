@@ -1,15 +1,15 @@
-package com.example.ashok_ray.security.Module_CHAT;
+package com.example.ashok_ray.security.DATA_MODEL;
 
 /**
  * Created by Ashok_Ray on 18-01-2019.
  */
 
-public class model_message {
+public class MDL_Message {
     String email,messagetext,time,username,from;
-    model_message(){}
+    MDL_Message(){}
 
 
-    public model_message(String email, String messagetext, String time, String username, String from) {
+    public MDL_Message(String email, String messagetext, String time, String username, String from) {
         this.email = email;
         this.messagetext = messagetext;
         this.username = username;

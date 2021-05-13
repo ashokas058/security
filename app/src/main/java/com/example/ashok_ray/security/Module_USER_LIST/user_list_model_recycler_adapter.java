@@ -9,8 +9,8 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.example.ashok_ray.security.R;
-import com.example.ashok_ray.security.master_chat_private;
-import com.example.ashok_ray.security.model_profile;
+import com.example.ashok_ray.security.Module_CHAT.ACT_ChatPrivate;
+import com.example.ashok_ray.security.DATA_MODEL.MDL_User;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -23,10 +23,10 @@ import de.hdodenhof.circleimageview.CircleImageView;
 
 public class user_list_model_recycler_adapter extends RecyclerView.Adapter<user_list_model_recycler_adapter.user_list_holder>{
 
-ArrayList<model_profile> m_profile;
+ArrayList<MDL_User> m_profile;
 
 
-    public user_list_model_recycler_adapter(ArrayList<model_profile> m_profile) {
+    public user_list_model_recycler_adapter(ArrayList<MDL_User> m_profile) {
         this.m_profile = m_profile;
     }
 
@@ -54,9 +54,9 @@ String url=m_profile.get(position).getImage_url();
     public  static  class user_list_holder extends  RecyclerView.ViewHolder implements View.OnClickListener{
         CircleImageView imageView;
         TextView name,status;
-        ArrayList<model_profile> m_pro_array;
+        ArrayList<MDL_User> m_pro_array;
 
-        public user_list_holder(View itemView,ArrayList<model_profile> m_p) {
+        public user_list_holder(View itemView,ArrayList<MDL_User> m_p) {
             super(itemView);
             itemView.setOnClickListener(this);
             imageView=itemView.findViewById(R.id.chat_profile_pic_list_id);
@@ -71,7 +71,7 @@ String url=m_profile.get(position).getImage_url();
             String username=m_pro_array.get(pos).getUser_name();
             String url=m_pro_array.get(pos).getImage_url();
             String key=m_pro_array.get(pos).getKey();
-            Intent intent=new Intent(view.getContext(), master_chat_private.class);
+            Intent intent=new Intent(view.getContext(), ACT_ChatPrivate.class);
             intent.putExtra("username",username);
             intent.putExtra("url",url);
             intent.putExtra("key",key);

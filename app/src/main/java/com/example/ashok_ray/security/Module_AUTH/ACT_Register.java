@@ -1,4 +1,4 @@
-package com.example.ashok_ray.security;
+package com.example.ashok_ray.security.Module_AUTH;
 
 import android.app.ProgressDialog;
 import android.content.Context;
@@ -13,6 +13,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.ashok_ray.security.Module_HOME.ACT_Home;
+import com.example.ashok_ray.security.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -23,7 +24,7 @@ import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.HashMap;
 
-public class register extends AppCompatActivity {
+public class ACT_Register extends AppCompatActivity {
     EditText fullname;
     EditText email_reg;
     EditText pass_reg;
@@ -41,10 +42,11 @@ public class register extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        progressDialog = new ProgressDialog(register.this);
+        setContentView(R.layout.activity_register);
+        progressDialog = new ProgressDialog(ACT_Register.this);
         progressDialog.setTitle("Registering");
         progressDialog.setMessage("Please wait .....");
-        setContentView(R.layout.activity_register);
+
         //--------------------------------------
         fullname = findViewById(R.id.fullname_reg_id);
         email_reg = findViewById(R.id.email_reg_id);
@@ -54,7 +56,7 @@ public class register extends AppCompatActivity {
         //-------------------------------------
         email_patern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
         firebaseAuth = FirebaseAuth.getInstance();
-        context=register.this;
+        context= ACT_Register.this;
         progressDialog.setTitle("Registering");
 
         progressDialog.setMessage("Please wait");
@@ -93,11 +95,11 @@ public class register extends AppCompatActivity {
                                 newhashmap.put("user_email",email_temp);
                                 newhashmap.put("key",uid);
                                 mreference.setValue(newhashmap);
-                                Intent home_activity=new Intent(register.this, ACT_Home.class);
+                                Intent home_activity=new Intent(ACT_Register.this, ACT_Home.class);
                                 startActivity(home_activity);
                             }
                             else if(task.getException().getMessage().equals("The email address is already in use by another account.\"")){
-                                Toast.makeText(register.this,"The email address is already in use by another account.\"",Toast.LENGTH_LONG).show();
+                                Toast.makeText(ACT_Register.this,"The email address is already in use by another account.\"",Toast.LENGTH_LONG).show();
                             }
                         }
                     });

@@ -1,4 +1,4 @@
-package com.example.ashok_ray.security;
+package com.example.ashok_ray.security.Module_CHAT;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -9,8 +9,10 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
-import com.example.ashok_ray.security.Module_CHAT.messageAdapter;
-import com.example.ashok_ray.security.Module_CHAT.model_message;
+import com.example.ashok_ray.security.DATA_MODEL.MDL_User;
+import com.example.ashok_ray.security.Module_CHAT.ADPTR_Message;
+import com.example.ashok_ray.security.DATA_MODEL.MDL_Message;
+import com.example.ashok_ray.security.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -22,13 +24,13 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 
-public class master_chat_private extends AppCompatActivity {
+public class ACT_ChatPrivate extends AppCompatActivity {
     DatabaseReference databaseReference;
     EditText message_text;
     Button clck;
     String username,key,url;
     RecyclerView messageRecycler;
-    ArrayList<model_message>  modelList;
+    ArrayList<MDL_Message>  modelList;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -53,7 +55,7 @@ public class master_chat_private extends AppCompatActivity {
             databaseReference.addValueEventListener(new ValueEventListener() {
                 @Override
                 public void onDataChange(DataSnapshot dataSnapshot) {
-                    model_profile mprofile = dataSnapshot.getValue(model_profile.class);
+                    MDL_User mprofile = dataSnapshot.getValue(MDL_User.class);
                     String username = mprofile.getUser_name();
                     String email = mprofile.getUser_email();
                     String recv = message_text.getText().toString();
@@ -124,11 +126,11 @@ public class master_chat_private extends AppCompatActivity {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 for (DataSnapshot b:dataSnapshot.getChildren()){
-                    model_message n=b.getValue(model_message.class);
+                    MDL_Message n=b.getValue(MDL_Message.class);
                     modelList.add(n);
 
                 }
-                messageAdapter g=new messageAdapter(modelList,getApplicationContext());
+                ADPTR_Message g=new ADPTR_Message(modelList,getApplicationContext());
                 messageRecycler.setAdapter(g);
                 g.notifyDataSetChanged();
                 //messageRecycler.setHasFixedSize(true);

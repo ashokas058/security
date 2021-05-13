@@ -1,10 +1,10 @@
-package com.example.ashok_ray.security;
+package com.example.ashok_ray.security.DATA_MODEL;
 
 /**
  * Created by Ashok on 5/7/2019.
  */
 
-public class model_ssh  {
+public class MDL_Ssh {
     String hostname,port,username,password;
 
     public String getHostname() {
@@ -39,7 +39,7 @@ public class model_ssh  {
         this.password = password;
     }
 
-    public model_ssh(String hostname, String port, String username, String password) {
+    public MDL_Ssh(String hostname, String port, String username, String password) {
 
         this.hostname = hostname;
         this.port = port;

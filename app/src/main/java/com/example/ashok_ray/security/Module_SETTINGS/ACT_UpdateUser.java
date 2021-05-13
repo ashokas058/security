@@ -1,4 +1,4 @@
-package com.example.ashok_ray.security;
+package com.example.ashok_ray.security.Module_SETTINGS;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -8,11 +8,11 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.google.firebase.auth.FirebaseAuth;
+import com.example.ashok_ray.security.R;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-public class changeUser extends AppCompatActivity {
+public class ACT_UpdateUser extends AppCompatActivity {
 static String uid,type;
 DatabaseReference databaseReference;
 EditText showEdit;
@@ -36,13 +36,13 @@ Button changebt;
                   if (type=="changeUsername"){
                       String name=showEdit.getText().toString();
                       databaseReference.child("user_name").setValue(name);
-                      Toast.makeText(changeUser.this, "updated Username", Toast.LENGTH_SHORT).show();
+                      Toast.makeText(ACT_UpdateUser.this, "updated Username", Toast.LENGTH_SHORT).show();
 
                   }
                   else{
                       String phone=showEdit.getText().toString();
                       databaseReference.child("Phone").setValue(phone);
-                      Toast.makeText(changeUser.this, "updated Phone", Toast.LENGTH_SHORT).show();
+                      Toast.makeText(ACT_UpdateUser.this, "updated Phone", Toast.LENGTH_SHORT).show();
 
 
                   }

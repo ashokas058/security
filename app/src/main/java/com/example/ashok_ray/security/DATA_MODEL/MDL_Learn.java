@@ -1,14 +1,14 @@
-package com.example.ashok_ray.security;
+package com.example.ashok_ray.security.DATA_MODEL;
 
 /**
  * Created by Ashok_Ray on 25-12-2018.
  */
 
-public class model_recycler  {
+public class MDL_Learn {
     String title_top,image_url,text_data;
-    model_recycler(){}
+    MDL_Learn(){}
 
-    public model_recycler(String title_top, String image_url, String text_data) {
+    public MDL_Learn(String title_top, String image_url, String text_data) {
         this.title_top = title_top;
         this.image_url = image_url;
         this.text_data = text_data;
