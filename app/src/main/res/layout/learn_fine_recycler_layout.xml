@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="wrap_content"
+    android:layout_height="160dp"
+    android:orientation="vertical">
+    <TextView
+        android:gravity="center"
+        android:text="head"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="top"
+        android:id="@+id/head_id"/>
+    <ImageView
+        android:layout_gravity="center"
+        android:layout_width="98dp"
+        android:id="@+id/book_cover_pic_id"
+        android:layout_height="98dp"
+        android:src="@color/black"/>
+    <TextView
+        android:textAllCaps="true"
+        android:text=""
+        android:textStyle="bold"
+
+        android:layout_gravity="left"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/topic"/>
+    <TextView
+        android:text="dummy...dummy"
+        android:layout_gravity="start"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/full_text_id"/>
+
+
+
+</LinearLayout>

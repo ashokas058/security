@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.example.ashok_ray.security.setting">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+    <TextView
+        android:textColor="@color/black"
+        android:layout_marginTop="20dp"
+        android:id="@+id/textView3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Profile"
+        android:textAlignment="viewStart"/>
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:layout_gravity="center"
+            android:layout_width="90dp"
+            android:id="@+id/pro_change_id"
+            android:layout_height="90dp"
+            android:src="@drawable/ic_person_outline_black_24dp"/>
+
+        <TextView
+            android:clickable="false"
+            android:padding="0dp"
+            android:id="@+id/textView8"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="+ change"
+            android:textAlignment="center"
+            android:textSize="25dp"
+            android:textStyle="bold" />
+
+
+        <TextView
+            android:padding="10dp"
+            android:layout_marginTop="10dp"
+            android:drawableRight="@drawable/ic_edit_black_24dp"
+            android:id="@+id/change_name_user_id"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Name" />
+        <TextView
+            android:padding="10dp"
+            android:layout_marginTop="10dp"
+            android:drawableRight="@drawable/ic_edit_black_24dp"
+            android:id="@+id/change_phone_user_id"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Phone Number" />
+        <TextView
+            android:textColor="@color/black"
+            android:layout_marginTop="20dp"
+            android:id="@+id/j"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Privacy"
+            android:textAlignment="viewStart" />
+
+        <Switch
+            android:padding="10dp"
+            android:id="@+id/switch_contact_id"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Show Contact Number"
+            />
+        <Switch
+            android:padding="10dp"
+            android:id="@+id/switch_online_id"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Show Online" />
+        <TextView
+            android:textColor="@color/black"
+            android:layout_marginTop="20dp"
+            android:id="@+id/text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Upgrade Plan"
+            android:textAlignment="viewStart" />
+        <android.support.v7.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/upgrade_plan_recycler_id"></android.support.v7.widget.RecyclerView>
+
+
+        <TextView
+            android:id="@+id/ssh_server_setting_id"
+            android:textColor="@color/black"
+            android:layout_marginTop="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="SSH Server"
+            android:textAlignment="viewStart" />
+
+    </LinearLayout>
+
+</android.support.v4.widget.NestedScrollView>

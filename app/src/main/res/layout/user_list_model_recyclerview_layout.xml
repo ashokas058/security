@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_margin="20dp"
+    android:layout_height="wrap_content">
+
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/chat_profile_pic_list_id"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
+        android:layout_margin="10dp"
+        android:layout_marginStart="8dp"
+        android:src="@mipmap/user_avatar_2"
+         />
+
+    <TextView
+        android:textAllCaps="true"
+        android:id="@+id/user_status_id"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/chat_profile_pic_list_id"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="36dp"
+        android:text="Tex"
+        android:textSize="15dp" />
+
+    <TextView
+        android:textAllCaps="true"
+
+        android:id="@+id/user_name_list__id"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+
+        android:layout_marginStart="12dp"
+        android:layout_toEndOf="@+id/chat_profile_pic_list_id"
+        android:text="TextView"
+        android:textSize="20dp"
+        tools:layout_editor_absoluteY="36dp" />
+
+
+</RelativeLayout>

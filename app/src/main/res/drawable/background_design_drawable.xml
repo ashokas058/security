@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item>
+        <shape android:shape="line">
+            <corners android:radius="@dimen/cardview_default_radius" />
+            <stroke
+                android:width="8dp"
+                android:color="@color/white" />
+        </shape>
+    </item>
+</layer-list>

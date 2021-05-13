@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">OSA</string>
+    <string name="login_to_osa">Login to OSA</string>
+    <string name="osa_logo">OSA_logo</string>
+    <string name="username">username</string>
+    <string name="new_user_click_here">New User?Click here</string>
+    <string name="login">Login</string>
+</resources>

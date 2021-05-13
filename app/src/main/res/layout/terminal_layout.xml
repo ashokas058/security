@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="250dp"
+    android:background="@color/black">
+
+    <TextView
+        android:id="@+id/term_show_id"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/term_input"
+        android:layout_alignParentStart="true"
+        android:text="localhost:~$ ~C
+ssh> -h
+Commands:
+      -L[bind_address:]port:host:hostport    Request local forward
+      -R[bind_address:]port:host:hostport    Request remote forward
+      -D[bind_address:]port                  Request dynamic forward
+      -KL[bind_address:]port                 Cancel local forward
+      -KR[bind_address:]port                 Cancel remote forward
+      -KD[bind_address:]port                 Cancel dynamic forward
+ssh> -L 1445:remote-win2k3:445
+Forwarding port."
+        android:textColor="@color/white" />
+
+    <EditText
+        android:id="@+id/term_input"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="6dp"
+        android:text="localhost:~$ "
+        android:textColor="@color/white" />
+
+    <Button
+
+        android:id="@+id/cmd_send_ssh_id"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignTop="@+id/term_input"
+        android:text="cmd" />
+
+</RelativeLayout>
