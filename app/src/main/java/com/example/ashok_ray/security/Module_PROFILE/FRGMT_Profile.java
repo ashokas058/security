@@ -29,6 +29,8 @@ import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
+import static com.example.ashok_ray.security.osafirebase.databaseReferenceOSA;
+
 /**
  * Created by Ashok_Ray on 24-02-2019.
  */
@@ -65,7 +67,7 @@ public class FRGMT_Profile extends Fragment {
         if (firebaseAuth != null) {
             if (firebaseAuth.getCurrentUser() != null) {
                 String uid = firebaseAuth.getCurrentUser().getUid();
-                reference = FirebaseDatabase.getInstance().getReference("user").child(uid);
+                reference = databaseReferenceOSA.child("user").child(uid);
                 reference.keepSynced(true);
                 reference.addValueEventListener(new ValueEventListener() {
                     @Override
@@ -101,9 +103,7 @@ public class FRGMT_Profile extends Fragment {
     }
     private void initRecyclerViews(){
         try {
-            firebaseAuth = FirebaseAuth.getInstance();
-            FirebaseDatabase f = FirebaseDatabase.getInstance();
-            reference = FirebaseDatabase.getInstance().getReference("user").child("beginners");
+            reference =  databaseReferenceOSA.child("user").child("beginners");
             reference.addValueEventListener(new ValueEventListener() {
                 @Override
                 public void onDataChange(DataSnapshot dataSnapshot) {
@@ -120,7 +120,7 @@ public class FRGMT_Profile extends Fragment {
 
                 }
             });
-            reference=FirebaseDatabase.getInstance().getReference("user").child("news");
+            reference= databaseReferenceOSA.child("user").child("news");
             reference.addValueEventListener(new ValueEventListener() {
                 @Override
                 public void onDataChange(DataSnapshot dataSnapshot) {
@@ -139,7 +139,7 @@ public class FRGMT_Profile extends Fragment {
                 }
             });
         }catch (Exception e){
-            Toast.makeText(context, e.getMessage(), Toast.LENGTH_SHORT).show();
+            Toast.makeText(getContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
 
         }
     }

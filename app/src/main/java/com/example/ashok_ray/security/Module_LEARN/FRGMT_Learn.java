@@ -18,6 +18,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.squareup.picasso.Picasso;
 
+import static com.example.ashok_ray.security.osafirebase.databaseReferenceOSA;
+
 /**
  * Created by Ashok_Ray on 04-01-2019.
  */
@@ -46,8 +48,7 @@ public class FRGMT_Learn extends Fragment {
     }
 
    private  void initLearnDetails(){
-       database=FirebaseDatabase.getInstance();
-       reference=database.getReference("user").child("beginners");
+       reference= databaseReferenceOSA.child("user").child("beginners");
        reference.keepSynced(true);
        FirebaseRecyclerAdapter<MDL_Learn,learnviewholder>firebase_adapt=new FirebaseRecyclerAdapter<MDL_Learn, learnviewholder>(MDL_Learn.class,R.layout.learn_recycler_layout_new,learnviewholder.class,reference) {
            @Override

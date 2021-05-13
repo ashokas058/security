@@ -9,8 +9,8 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.ashok_ray.security.R;
+import com.example.ashok_ray.security.osafirebase;
 import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
 
 public class ACT_UpdateUser extends AppCompatActivity {
 static String uid,type;
@@ -31,7 +31,7 @@ Button changebt;
       changebt.setOnClickListener(new View.OnClickListener() {
           @Override
           public void onClick(View view) {
-              databaseReference=FirebaseDatabase.getInstance().getReference("user").child(uid);
+              databaseReference= osafirebase.databaseReferenceOSA.child("user").child(uid);
               if(uid!=null&&type!=null){
                   if (type=="changeUsername"){
                       String name=showEdit.getText().toString();

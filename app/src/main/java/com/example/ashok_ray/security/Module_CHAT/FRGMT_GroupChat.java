@@ -17,6 +17,7 @@ import android.widget.EditText;
 import com.example.ashok_ray.security.DATA_MODEL.MDL_Message;
 import com.example.ashok_ray.security.R;
 import com.example.ashok_ray.security.DATA_MODEL.MDL_User;
+import com.example.ashok_ray.security.osafirebase;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -35,19 +36,12 @@ import java.util.HashMap;
  */
 
 public class FRGMT_GroupChat extends Fragment {
-    String user_name;
-    public void getusername(String user_name){
-        this.user_name=user_name;
-    }
     FirebaseAuth firebaseAuth;
     FirebaseUser firebaseUser;
     DatabaseReference databaseReference,chatrootref;
-    FirebaseDatabase firebaseDatabase;
     Button send;
     String currentuser_uid;
-    String group_id;
-    String chatuser,mydate,user_email,user_url;
-    String message;
+    String chatuser, userEmail,userName;
     EditText message_text;
     RecyclerView messageRecycler;
    ArrayList <MDL_Message> modelList;
@@ -64,82 +58,61 @@ public class FRGMT_GroupChat extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         initRecyclerVw();
         initChatMessage();
+        initUseraluesDB();
         send.setOnClickListener(new View.OnClickListener() {
     @Override
     public void onClick(View view) {
             sendmessage(); }
 }); }
-
     private void sendmessage() {
-        if (!TextUtils.isEmpty(message_text.getText().toString())) {
-            firebaseAuth = FirebaseAuth.getInstance();
-            firebaseDatabase = FirebaseDatabase.getInstance();
-            firebaseUser = firebaseAuth.getCurrentUser();
-            currentuser_uid = firebaseUser.getUid();
-            databaseReference = firebaseDatabase.getReference("user").child(currentuser_uid);
-            databaseReference.addValueEventListener(new ValueEventListener() {
-                @Override
-                public void onDataChange(DataSnapshot dataSnapshot) {
-                    MDL_User mprofile = dataSnapshot.getValue(MDL_User.class);
-                    String username = mprofile.getUser_name();
-                    String email = mprofile.getUser_email();
-                    String recv = message_text.getText().toString();
-                    Date time = new Date();
 
+        if (!TextUtils.isEmpty(message_text.getText().toString())) {
+                   String recv = message_text.getText().toString();
+                    Date time = new Date();
                     long l_time = time.getTime();
                     String current = getTime(l_time);
-                    firebaseAuth = FirebaseAuth.getInstance();
-                    firebaseDatabase = FirebaseDatabase.getInstance();
-                    databaseReference = firebaseDatabase.getReference("chat").child("message").push();
+                    databaseReference = osafirebase.databaseReferenceOSA.child("chat").child("message").push();
                     String key = databaseReference.getKey();
                     chatuser = "message/" + key;
                     String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
                     HashMap currenthash = new HashMap();
                     HashMap chatData = new HashMap();
-
                     chatData.put("from", uid);
-                    chatData.put("username", username);
-                    chatData.put("email", email);
+                    chatData.put("username",userName);
+                    chatData.put("email", userEmail);
                     //chatData.put("user_email",fetuserEmail(databaseReference));
                     chatData.put("time", current);
                     chatData.put("messagetext", recv);
                     currenthash.put(chatuser, chatData);
-                    chatrootref = firebaseDatabase.getReference("chat");
+                    chatrootref = osafirebase.databaseReferenceOSA.child("chat");
                     chatrootref.updateChildren(currenthash, new DatabaseReference.CompletionListener() {
                         @Override
                         public void onComplete(DatabaseError databaseError, DatabaseReference databaseReference) {
-                            message_text.setText("");
+                            message_text.setText(null);
                             if (databaseError != null) {
 
                                 Log.d("chat_log", databaseError.getMessage().toString());
                             }
                         }
-                    });
-
-                }
-
-                @Override
-                public void onCancelled(DatabaseError databaseError) {
-
-                }
-            });
-
-        }
+                    }); }
         else
-        {message_text.setHint("Enter the Message");}
+        {
+            message_text.setHint("Enter the Message");
+        }
     }
     private void initChatMessage(){
        modelList=new ArrayList<>();
-       DatabaseReference reference=FirebaseDatabase.getInstance().getReference("chat").child("message");
+       DatabaseReference reference= osafirebase.databaseReferenceOSA.child("chat").child("message");
        reference.keepSynced(true);
        reference.addValueEventListener(new ValueEventListener() {
            @Override
            public void onDataChange(DataSnapshot dataSnapshot) {
+               modelList.clear();
                for (DataSnapshot b:dataSnapshot.getChildren()){
                    MDL_Message n=b.getValue(MDL_Message.class);
                    modelList.add(n);
-
                }
+               Log.d("full ",modelList.toString());
                ADPTR_Message g=new ADPTR_Message(modelList,getContext());
                messageRecycler.setAdapter(g);
                g.notifyDataSetChanged();
@@ -147,7 +120,6 @@ public class FRGMT_GroupChat extends Fragment {
                messageRecycler.smoothScrollToPosition(messageRecycler.getAdapter().getItemCount());
 
            }
-
            @Override
            public void onCancelled(DatabaseError databaseError) {
 
@@ -171,5 +143,26 @@ public class FRGMT_GroupChat extends Fragment {
         int hours   = (int) ((var/ (1000*60*60)) % 24);
         String t=Integer.toString(hours)+":"+Integer.toString(minutes)+":"+Integer.toString(seconds);
         return  t;
+    }
+    private void setUserValue(String userName,String userEmail){
+
+        this.userName=userName;
+        this.userEmail=userEmail;
+    }
+    private void initUseraluesDB(){
+        firebaseAuth = FirebaseAuth.getInstance();
+        firebaseUser = firebaseAuth.getCurrentUser();
+        currentuser_uid = firebaseUser.getUid();
+        databaseReference = osafirebase.databaseReferenceOSA.child("user").child(currentuser_uid);
+        databaseReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                MDL_User mprofile = dataSnapshot.getValue(MDL_User.class);
+                setUserValue(mprofile.getUser_name(),mprofile.getUser_email());
+            }
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+            }
+        });
     }
 }

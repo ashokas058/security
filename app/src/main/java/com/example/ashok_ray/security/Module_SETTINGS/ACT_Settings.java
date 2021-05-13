@@ -17,6 +17,7 @@ import android.widget.Toast;
 import com.example.ashok_ray.security.Module_HOME.ACT_Home;
 import com.example.ashok_ray.security.R;
 import com.example.ashok_ray.security.Module_SSH.ACT_SshSettings;
+import com.example.ashok_ray.security.osafirebase;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -26,7 +27,6 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
@@ -88,7 +88,7 @@ public class ACT_Settings extends AppCompatActivity implements View.OnClickListe
         if (FirebaseAuth.getInstance().getCurrentUser() != null) {
             firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
             final String uid = firebaseUser.getUid();
-            databaseReference = FirebaseDatabase.getInstance().getReference("user").child(uid);
+            databaseReference =  osafirebase.databaseReferenceOSA.child("user").child(uid);
 
             storageReference = FirebaseStorage.getInstance().getReference("Profile_pic").child("propic" + uid);
             storageReference.putFile(ur).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
@@ -138,7 +138,7 @@ public class ACT_Settings extends AppCompatActivity implements View.OnClickListe
         if(FirebaseAuth.getInstance().getCurrentUser()!=null){
             String uid=FirebaseAuth.getInstance().getCurrentUser().getUid();
             if (uid!=null){
-                databaseReference = FirebaseDatabase.getInstance().getReference("user").child(uid);
+                databaseReference = osafirebase.databaseReferenceOSA.child("user").child(uid);
                 databaseReference.addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {

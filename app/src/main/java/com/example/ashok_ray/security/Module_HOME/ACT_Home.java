@@ -1,7 +1,9 @@
 package com.example.ashok_ray.security.Module_HOME;
 
 import android.app.Fragment;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.annotation.NonNull;
 import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.NavigationView;
@@ -23,15 +25,17 @@ import com.example.ashok_ray.security.Module_LEARN.FRGMT_Learn;
 import com.example.ashok_ray.security.Module_AUTH.ACT_Login;
 import com.example.ashok_ray.security.Module_PROFILE.FRGMT_Profile;
 import com.example.ashok_ray.security.Module_SETTINGS.ACT_Settings;
+import com.example.ashok_ray.security.osafirebase;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthUserCollisionException;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Picasso;
+
+import static com.example.ashok_ray.security.osafirebase.databaseReferenceOSA;
 
 public class ACT_Home extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     FirebaseAuth newauth;
@@ -49,6 +53,8 @@ public class ACT_Home extends AppCompatActivity implements NavigationView.OnNavi
     DrawerLayout drawer;
     AppBarLayout toolb;
     TextView pro_name;
+    SharedPreferences sharedUserDetails;
+    SharedPreferences.Editor editUserDetails;
 
 
     @Override
@@ -56,6 +62,7 @@ public class ACT_Home extends AppCompatActivity implements NavigationView.OnNavi
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
         initViewComponent();
+        initSharedPref();
         initFragments();
         initFireBaseAuth();
         navigationView.setNavigationItemSelectedListener(this);
@@ -92,9 +99,9 @@ public class ACT_Home extends AppCompatActivity implements NavigationView.OnNavi
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        if(FirebaseAuth.getInstance().getCurrentUser().getUid()!=null){
+        if(FirebaseAuth.getInstance().getCurrentUser()!=null){
             String uid=FirebaseAuth.getInstance().getCurrentUser().getUid();
-            databaseReference=FirebaseDatabase.getInstance().getReference("user").child(uid).child("status");
+            databaseReference= databaseReferenceOSA.child("user").child(uid).child("status");
             databaseReference.setValue("ofline");
         }
         else{
@@ -136,7 +143,7 @@ public class ACT_Home extends AppCompatActivity implements NavigationView.OnNavi
             String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
             if (uid != null) {
 
-                databaseReference = FirebaseDatabase.getInstance().getReference("user").child(uid);
+                databaseReference = databaseReferenceOSA.child("user").child(uid);
                 databaseReference.keepSynced(true);
                 databaseReference.addValueEventListener(new ValueEventListener() {
                     @Override
@@ -146,7 +153,11 @@ public class ACT_Home extends AppCompatActivity implements NavigationView.OnNavi
                             Picasso.get().load(url).into(pic);
                         }
                         String nam = dataSnapshot.child("user_name").getValue().toString();
+                        String userEmail=dataSnapshot.child("user_email").getValue().toString();
                         pro_name.setText(nam);
+                        editUserDetails.putString("userEmail",userEmail);
+                        editUserDetails.putString("userName",nam);
+                        editUserDetails.commit();
 
                     }
 
@@ -156,7 +167,7 @@ public class ACT_Home extends AppCompatActivity implements NavigationView.OnNavi
                     }
                 });
 
-                databaseReference.child("status").setValue("ofline");
+                databaseReference.child("status").setValue("online");
             }
         }
         else{
@@ -168,5 +179,10 @@ public class ACT_Home extends AppCompatActivity implements NavigationView.OnNavi
        View header=navigationView.getHeaderView(0);
        pic=header.findViewById(R.id.profilePic_id);
        pro_name=header.findViewById(R.id.profileName_id);
+    }
+    private  void initSharedPref(){
+        sharedUserDetails=getSharedPreferences("UserDetails", Context.MODE_PRIVATE);
+        editUserDetails=sharedUserDetails.edit();
+
     }
 }

@@ -10,11 +10,11 @@ import android.widget.TextView;
 
 import com.example.ashok_ray.security.DATA_MODEL.MDL_Message;
 import com.example.ashok_ray.security.R;
+import com.example.ashok_ray.security.osafirebase;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Picasso;
 
@@ -48,7 +48,7 @@ public class ADPTR_Message extends RecyclerView.Adapter<ADPTR_Message.messagevie
         MDL_Message model=modelMessage.get(position);
         String currentUser_uid=FirebaseAuth.getInstance().getCurrentUser().getUid();
         String messageFrom=model.getFrom();
-        databaseReference= FirebaseDatabase.getInstance().getReference("user").child(messageFrom);
+        databaseReference= osafirebase.databaseReferenceOSA.child("user").child(messageFrom);
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {

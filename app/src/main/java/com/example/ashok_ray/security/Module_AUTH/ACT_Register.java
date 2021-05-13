@@ -24,6 +24,8 @@ import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.HashMap;
 
+import static com.example.ashok_ray.security.osafirebase.databaseReferenceOSA;
+
 public class ACT_Register extends AppCompatActivity {
     EditText fullname;
     EditText email_reg;
@@ -88,8 +90,7 @@ public class ACT_Register extends AppCompatActivity {
                                 progressDialog.hide();
                                 current_user=firebaseAuth.getCurrentUser();
                                 uid=current_user.getUid();
-                                mdatabase=FirebaseDatabase.getInstance();
-                                mreference=mdatabase.getReference("user").child(uid);
+                                mreference= databaseReferenceOSA.child("user").child(uid);
                                 HashMap newhashmap=new HashMap();
                                 newhashmap.put("user_name",full_name);
                                 newhashmap.put("user_email",email_temp);

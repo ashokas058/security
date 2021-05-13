@@ -10,9 +10,9 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import com.example.ashok_ray.security.DATA_MODEL.MDL_User;
-import com.example.ashok_ray.security.Module_CHAT.ADPTR_Message;
 import com.example.ashok_ray.security.DATA_MODEL.MDL_Message;
 import com.example.ashok_ray.security.R;
+import com.example.ashok_ray.security.osafirebase;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -51,7 +51,7 @@ public class ACT_PrivateChat extends AppCompatActivity {
         if (!TextUtils.isEmpty(message_text.getText().toString())) {
 
             String currentuser_uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
-             databaseReference = FirebaseDatabase.getInstance().getReference("user").child(currentuser_uid);
+             databaseReference = osafirebase.databaseReferenceOSA.child("user").child(currentuser_uid);
             databaseReference.addValueEventListener(new ValueEventListener() {
                 @Override
                 public void onDataChange(DataSnapshot dataSnapshot) {

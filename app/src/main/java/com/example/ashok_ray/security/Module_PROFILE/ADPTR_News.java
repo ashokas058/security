@@ -22,6 +22,9 @@ public class ADPTR_News extends RecyclerView.Adapter<ADPTR_News.newsviewholder> 
     ArrayList<MDL_News> news=new ArrayList<MDL_News>();
     Context context;
 
+    public ADPTR_News() {
+    }
+
     public ADPTR_News(ArrayList<MDL_News> news, Context context) {
         this.news = news;
         this.context = context;
