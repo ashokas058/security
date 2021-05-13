@@ -24,7 +24,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 
-public class ACT_ChatPrivate extends AppCompatActivity {
+public class ACT_PrivateChat extends AppCompatActivity {
     DatabaseReference databaseReference;
     EditText message_text;
     Button clck;

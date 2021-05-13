@@ -33,8 +33,8 @@
             android:noHistory="true" />
         <activity android:name=".Module_SETTINGS.ACT_Settings" />
         <activity android:name=".Module_SETTINGS.ACT_UpdateUser" />
-        <activity android:name=".Module_LEARN.ACT_ReadForm" />
-        <activity android:name=".Module_CHAT.ACT_ChatPrivate" />
+        <activity android:name=".Module_PROFILE.ACT_LearnForm" />
+        <activity android:name=".Module_CHAT.ACT_PrivateChat" />
         <activity android:name=".Module_SSH.ACT_SshSettings"></activity>
     </application>
 

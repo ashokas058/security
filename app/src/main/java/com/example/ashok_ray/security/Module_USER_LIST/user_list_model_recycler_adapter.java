@@ -9,7 +9,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.example.ashok_ray.security.R;
-import com.example.ashok_ray.security.Module_CHAT.ACT_ChatPrivate;
+import com.example.ashok_ray.security.Module_CHAT.ACT_PrivateChat;
 import com.example.ashok_ray.security.DATA_MODEL.MDL_User;
 import com.squareup.picasso.Picasso;
 
@@ -71,7 +71,7 @@ String url=m_profile.get(position).getImage_url();
             String username=m_pro_array.get(pos).getUser_name();
             String url=m_pro_array.get(pos).getImage_url();
             String key=m_pro_array.get(pos).getKey();
-            Intent intent=new Intent(view.getContext(), ACT_ChatPrivate.class);
+            Intent intent=new Intent(view.getContext(), ACT_PrivateChat.class);
             intent.putExtra("username",username);
             intent.putExtra("url",url);
             intent.putExtra("key",key);

@@ -13,7 +13,6 @@ import android.widget.TextView;
 
 import com.example.ashok_ray.security.DATA_MODEL.MDL_Learn;
 import com.example.ashok_ray.security.R;
-import com.example.ashok_ray.security.Module_LEARN.ACT_ReadForm;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -82,7 +81,7 @@ public class ADPTR_Learn extends RecyclerView.Adapter<ADPTR_Learn.cardviewholder
             bundle.putString("top_title",m.getTitle_top());
             bundle.putString("full_text",m.getText_data());
             bundle.putString("image_url",m.getImage_url());
-Intent intent=new Intent(context, ACT_ReadForm.class);
+Intent intent=new Intent(context, ACT_LearnForm.class);
 intent.putExtras(bundle);
 context.startActivity(intent);
             //Toast.makeText(context, m.getText_data(), Toast.LENGTH_SHORT).show();

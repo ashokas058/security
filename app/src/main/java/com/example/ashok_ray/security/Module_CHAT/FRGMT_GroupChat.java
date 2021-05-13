@@ -34,7 +34,7 @@ import java.util.HashMap;
  * Created by Ashok_Ray on 04-01-2019.
  */
 
-public class FRGMT_ChatGroup extends Fragment {
+public class FRGMT_GroupChat extends Fragment {
     String user_name;
     public void getusername(String user_name){
         this.user_name=user_name;

@@ -43,7 +43,6 @@ public class FRGMT_Profile extends Fragment {
     MDL_User profile_object;
     ArrayList<MDL_Learn> model_ob_list = new ArrayList<MDL_Learn>();
     ArrayList<MDL_News> newshold = new ArrayList<MDL_News>();
-    String image;
     Context context;
 
     @Nullable

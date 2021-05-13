@@ -18,7 +18,7 @@ import android.widget.TextView;
 import java.util.ArrayList;
 
 import com.example.ashok_ray.security.R;
-import com.example.ashok_ray.security.Module_CHAT.FRGMT_ChatGroup;
+import com.example.ashok_ray.security.Module_CHAT.FRGMT_GroupChat;
 import com.example.ashok_ray.security.Module_LEARN.FRGMT_Learn;
 import com.example.ashok_ray.security.Module_AUTH.ACT_Login;
 import com.example.ashok_ray.security.Module_PROFILE.FRGMT_Profile;
@@ -114,7 +114,7 @@ public class ACT_Home extends AppCompatActivity implements NavigationView.OnNavi
         final CLS_HomeViewpager adapter = new CLS_HomeViewpager(getSupportFragmentManager());
         adapter.addfragment(new FRGMT_Profile(),"Profile");
         adapter.addfragment(new FRGMT_Learn(), "Learn");
-        adapter.addfragment(new FRGMT_ChatGroup(), "Chat");
+        adapter.addfragment(new FRGMT_GroupChat(), "Chat");
         viewPager.setAdapter(adapter);
         tabLayout.setupWithViewPager(viewPager, true);
     }

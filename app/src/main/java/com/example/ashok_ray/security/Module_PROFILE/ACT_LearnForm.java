@@ -1,4 +1,4 @@
-package com.example.ashok_ray.security.Module_LEARN;
+package com.example.ashok_ray.security.Module_PROFILE;
 
 import android.content.Intent;
 import android.support.design.widget.FloatingActionButton;
@@ -13,7 +13,7 @@ import com.example.ashok_ray.security.Module_SSH.FRGMT_Terminal;
 import com.example.ashok_ray.security.R;
 import com.squareup.picasso.Picasso;
 
-public class ACT_ReadForm extends AppCompatActivity {
+public class ACT_LearnForm extends AppCompatActivity {
 TextView title,fulltext;
 ImageView sub_image;
 FloatingActionButton floatingActionButton;
